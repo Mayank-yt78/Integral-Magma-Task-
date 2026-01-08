@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Digital Renaissance - Grid Edition</title>
+    
+    <link rel="stylesheet" href="Style.css" />
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <main class="landing-container">
+        <header class="navbar">
+          <div class="logo-box">
+            <img src="assets/star.png" alt="Logo" />
+          </div>
+          <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Marketplace</a>
+            <a href="#">Artist</a>
+            <a href="#">Community</a>
+          </nav>
+          <div class="auth-group">
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            <button class="btn-signup">Sign up</button>
+            <span class="v-sep"></span>
+            <button class="btn-login">Login</button>
+          </div>
+        </header>
+        <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+          <nav>
+            <a href="#">Home</a>
+            <a href="#">Marketplace</a>
+            <a href="#">Artist</a>
+            <a href="#">Community</a>
+          </nav>
+          <div class="auth-group mobile-auth">
+            <button class="btn-signup">Sign up</button>
+            <button class="btn-login">Login</button>
+          </div>
+        </div>
+
+        <section class="hero-main">
+          <div class="hero-left">
+            <div class="title-area">
+              <h1 class="main-title">
+                <span class="unlock-font">Unlock</span><br />
+                <span class="textured-text">The Digital Renaissance</span>
+              </h1>
+              <p class="sub-text">
+                Join the revolution, embrace the digital revolution, and become
+                a part of the ever-evolving NFT ecosystem.
+              </p>
+            </div>
+
+            <div class="nft-grid">
+              <div class="arch-card">
+                <div class="asset-view">
+                  <img src="assets/beer.png" alt="Bear" />
+                </div>
+                <div class="meta">
+                  <p>Bear</p>
+                  <span>by Andrew Garf</span>
+                </div>
+                <div class="price-capsule">40$</div>
+              </div>
+              <div class="arch-card">
+                <div class="asset-view">
+                  <img src="assets/Lion.png" alt="Bear" />
+                </div>
+                <div class="meta">
+                  <p>Lion</p>
+                  <span>by jen Stark</span>
+                </div>
+                <div class="price-capsule">80$</div>
+              </div>
+              <div class="arch-card">
+                <div class="asset-view">
+                  <img src="assets/cat.png" alt="Bear" />
+                </div>
+                <div class="meta">
+                  <p>Cats</p>
+                  <span>by Casey rasies</span>
+                </div>
+
+                <div class="price-capsule">120$</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="bg-vertical-text">MIIEJY13</div>
+            <div class="visual-stack">
+              <img
+                src="assets/stone.png"
+                class="stone-img floating"
+                alt="Stone"
+              />
+              <img src="assets/hand.png" class="hand-img" alt="Hand" />
+
+              <button class="btn-start-marble">
+                Start <span class="play-btn"> ▶</span>
+              </button>
+
+              <div class="barcode-glass">
+                <img src="assets/Barcode.png" alt="Barcode" />
+                <code>0 712345 3256 67893255 678900</code>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="ticker-wrap">
+          <img src="assets/star.png" />
+          <div class="ticker-item">Join the Revolution</div>
+          <img src="assets/star.png" />
+          <div class="ticker-item">Future is Here</div>
+          <img src="assets/star.png" />
+          <div class="ticker-item">NFT World</div>
+          <img src="assets/star.png" />
+          <div class="ticker-item">Rule the Game</div>
+          <img src="assets/star.png" />
+          <div class="ticker-item">We Are NFT</div>
+          <img src="assets/star.png" />
+        </footer>
+      </main>
+    </div>
+    <script>
+      (function(){
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        if(hamburger && mobileNav){
+          hamburger.addEventListener('click', function(){
+            const open = mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('open', open);
+            hamburger.setAttribute('aria-expanded', open);
+            mobileNav.setAttribute('aria-hidden', !open);
+          });
+        }
+
+        const themeToggle = document.getElementById('themeToggle');
+        const root = document.documentElement;
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if(stored === 'dark' || (!stored && prefersDark)) root.classList.add('dark-theme');
+
+        function updateToggleIcon(){
+          if(!themeToggle) return;
+          themeToggle.textContent = root.classList.contains('dark-theme') ? '☀️' : '🌙';
+        }
+
+        if(themeToggle){
+          themeToggle.addEventListener('click', function(){
+            const isDark = root.classList.toggle('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateToggleIcon();
+          });
+          updateToggleIcon();
+        }
+      })();
+    </script>
+  </body>
+</html>
